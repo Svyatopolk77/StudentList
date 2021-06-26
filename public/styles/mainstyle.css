@@ -1,0 +1,18 @@
+
+.content{
+	width: 800px;
+	margin: 30px auto;
+}
+.content h2{
+	text-align: center;
+}
+
+.profile_block{
+}
+.fas{
+	cursor: pointer;
+
+}
+.hidden{
+	display: none;
+}

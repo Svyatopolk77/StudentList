@@ -1,0 +1,11 @@
+{
+	"db_config":{
+		"dsn":"mysql:dbname=studentdb;host=127.0.0.1",
+		"host":"127.0.0.1",
+		"dbname":"studentd",
+		"user":"root",
+		"password":"root",
+		"userstable":"students",
+		"charse":"utf8"
+	}
+}

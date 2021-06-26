@@ -1,0 +1,72 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+  <script type="text/javascript">
+ 
+    
+    
+    function showStudentsListBlock(){
+      var profileBlock=document.querySelector('.profile_block')
+      var studentsListBlock=document.querySelector('.studentslist_block')
+      profileBlock.style.display='none'
+      studentsListBlock.style.display=''
+
+    }
+    function showProfileBlock(){
+
+      var profileBlock=document.querySelector('.profile_block')
+      var studentsListBlock=document.querySelector('.studentslist_block')
+     
+      profileBlock.style.display=''
+      studentsListBlock.style.display='none'
+    }
+  </script>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <label class="nav-link active" onclick="showProfileBlock()">Мой профиль</label>
+  </li>
+  <li class="nav-item">
+    <label onclick="showStudentsListBlock()" class="nav-link" >Список студентов</label>
+  </li>
+  
+</ul>
+
+<div class="profile_block">
+{% if profile is not null %}
+	<div class="mb-3 ">
+  <h3 class="form-label">{{profile.name}} {{profile.surname}}</h3>
+</div>
+<div class="mb-3 ">
+  <label   class="form-label">Email: {{profile.email}}</label>
+</div>
+<div class="mb-3 ">
+  <label  class="form-label">Пол: {{profile.sex}}</label>
+</div>
+<div class="mb-3 ">
+  <label class="form-label">Группа: {{profile.groupnum}} </label>
+</div>
+<div class="mb-3 ">
+  <label   class="form-label">Баллы ЕГЭ: {{profile.egescore}}</label>
+</div>
+<nav>
+<form action="/edit/{{profile.id}}" method="GET" style="float:left">
+  <button class="btn btn-success" type="submit">Редактировать</button>
+</form>
+<form action="/logout" method="POST" style="float: left; margin-left: 10px;">
+  <button class="btn btn-danger" type="submit">Выйти</button>
+</form>
+<nav>
+{% else %}
+<h3>Войдите в профиль, чтобы редактировать свои данные</h3>
+
+{% endif %}
+
+</div>
+<div class="studentslist_block" style="display: none;">
+  {%   include 'parts/table.twig' %}
+  {% include 'parts/pagination.twig' %}
+</div>
+
+
+
+{% endblock %}
